@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('index');
-    Route::get('informasi-pribadi', [MainController::class, 'informasiPribadi'])->name('informasi-pribadi');
+    Route::resource('informasi-pribadi', PersonalInformationController::class);
     Route::resource('kelola-pengguna', UserController::class)->middleware('checkRole:Kepala Dinas');
+    Route::post('change-password', [PersonalInformationController::class, 'changePassword'])->name('change.password');
 });
 
 Route::get('/dashboard', function () {

@@ -49,7 +49,7 @@
         </li>
 
         <li class="sidebar-item  {{ Request::is('informasi-pribadi') ? 'active' : '' }}">
-          <a href="{{ route('informasi-pribadi') }}" class='sidebar-link'>
+          <a href="{{ route('informasi-pribadi.index') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-address-card"></i>
             <span>Informasi Pribadi</span>
           </a>

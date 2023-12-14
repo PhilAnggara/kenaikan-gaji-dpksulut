@@ -10,9 +10,4 @@ class MainController extends Controller
     {
         return view('pages.beranda');
     }
-
-    public function informasiPribadi()
-    {
-        return view('pages.informasi-pribadi');
-    }
 }
