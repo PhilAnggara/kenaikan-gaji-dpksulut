@@ -1,37 +1,85 @@
 .sidebar-wrapper .sidebar-header img {
-  height: 2rem;
+    height: 2rem;
 }
-html[data-bs-theme=dark] .sidebar-wrapper .sidebar-header img {
-  height: 2rem;
+html[data-bs-theme="dark"] .sidebar-wrapper .sidebar-header img {
+    height: 2rem;
 }
 
 .h-card {
-  box-shadow: 0 0.5rem .25rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.5rem 0.25rem rgba(0, 0, 0, 0.15);
 }
 .h-card:hover {
-  background-color: #b8d9fc;
-  box-shadow: 0 0.5rem .5rem rgba(0, 0, 0, 0.25) !important;
+    background-color: #b8d9fc;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25) !important;
 }
 
-
 .card-plus {
-  background-color: #a6d1ff;
+    background-color: #a6d1ff;
 }
 
 .h-card-img img {
-  height: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transform-origin: 50% 100%;
-  transition: transform 0.15s;
+    height: 200px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    transform-origin: 50% 100%;
+    transition: transform 0.15s;
 }
 .h-card-img:hover {
-  box-shadow: 0 0.5rem .5rem rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25) !important;
 }
 .h-card-img:hover img {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
-.h-350 {
-  height: 350px !important;
+.h-fix {
+    height: 400 !important;
+}
+
+/* auth */
+#auth #auth-right {
+    background: url(../images/logoC.png),
+        linear-gradient(90deg, #d9f0ff, #f5fbff);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+html[data-bs-theme="dark"] #auth #auth-right {
+    background: url(../images/logoC.png),
+        linear-gradient(90deg, #343d61, #5c6480);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#auth #auth-left {
+    padding: 5rem;
+}
+#auth #auth-left .auth-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+#auth #auth-left .auth-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+#auth #auth-left .auth-logo {
+    margin-bottom: 4rem;
+}
+#auth #auth-left .auth-logo img {
+    height: 3rem;
+}
+@media screen and (max-width: 1399.9px) {
+    #auth #auth-left {
+        padding: 2rem;
+    }
+}
+@media screen and (max-width: 767px) {
+    #auth #auth-left {
+        padding: 4rem;
+    }
+}
+@media screen and (max-width: 576px) {
+    #auth #auth-left {
+        padding: 5rem 2rem;
+    }
 }

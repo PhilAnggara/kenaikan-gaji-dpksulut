@@ -15,7 +15,7 @@
     
     <div class="row row-cols-12 row-cols-md-4">
       <div class="col">
-        <div class="card card-plus h-card h-100 shadow-sm h-350">
+        <div class="card card-plus h-card h-100 shadow-sm h-fix">
           <div class="card-body d-flex justify-content-center align-items-center">
             <i class="fas fa-user-plus fa-5x"></i>
             <a href="#" data-bs-toggle="modal" data-bs-target="#tambah" class="stretched-link"></a>
@@ -24,7 +24,7 @@
       </div>
       @forelse ($items as $item)
         <div class="col">
-          <div class="card h-card-img h-100 shadow-sm h-350">
+          <div class="card h-card-img h-100 shadow-sm h-fix">
             <div class="card-body position-relative">
               <div class="d-flex justify-content-center align-items-center flex-column">
                 <div class="avatar avatar-2xl">
@@ -42,7 +42,7 @@
                   <span class="badge bg-light-success">{{ $item->role }}</span>
                 @endif
               </div>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#tambah" class="stretched-link"></a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#detail-{{ $item->id }}" class="stretched-link"></a>
             </div>
             <div class="card-footer text-center py-1">
               <button type="button" class="btn icon icon-left" onclick="hapusData({{ $item->id }}, 'Hapus Pengguna', 'Yakin ingin menghapus {{ $item->name }}?')">
@@ -66,6 +66,7 @@
     
   </section>
 </div>
+@include('includes.modals.modal-pengguna')
 @endsection
 
 

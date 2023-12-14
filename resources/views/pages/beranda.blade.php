@@ -14,7 +14,7 @@
   <section class="section">
     <div class="card shadow-sm">
       <div class="card-header">
-        <h4 class="card-title">Beranda</h4>
+        <h4 class="card-title">Lorem, ipsum.</h4>
       </div>
       <div class="card-body">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, officia!

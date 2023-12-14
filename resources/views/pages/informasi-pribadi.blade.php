@@ -15,14 +15,23 @@
     <div class="row">
       <div class="col-12 col-lg-4">
         <div class="card shadow-sm">
-          <div class="card-body">
+          <div class="card-body p-5">
             <div class="d-flex justify-content-center align-items-center flex-column">
               <div class="avatar avatar-2xl">
                 <img src="https://ui-avatars.com/api/?background=0075B9&color=fff&bold=true&name={{ auth()->user()->name }}" alt="Avatar">
               </div>
 
               <h3 class="mt-3">{{ auth()->user()->name }}</h3>
-              <p class="text-small">{{ auth()->user()->role }}</p>
+              {{-- <p class="text-small">{{ auth()->user()->role }}</p> --}}
+              @if (auth()->user()->role == 'Kepala Dinas')
+                <span class="badge bg-light-danger">{{ auth()->user()->role }}</span>
+              @elseif (auth()->user()->role == 'Sub Bagian Kepegawaian')
+                <span class="badge bg-light-primary">{{ auth()->user()->role }}</span>
+              @elseif (auth()->user()->role == 'Dinas Daerah')
+                <span class="badge bg-light-secondary">{{ auth()->user()->role }}</span>
+              @else
+                <span class="badge bg-light-success">{{ auth()->user()->role }}</span>
+              @endif
             </div>
           </div>
         </div>

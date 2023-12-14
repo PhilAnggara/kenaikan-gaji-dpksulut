@@ -28,7 +28,3 @@ html[data-bs-theme=dark] .h-card-img:hover {
 html[data-bs-theme=dark] .h-card-img:hover img {
   transform: scale(1.1);
 }
-
-html[data-bs-theme=dark] .h-350 {
-  height: 350px !important;
-}
