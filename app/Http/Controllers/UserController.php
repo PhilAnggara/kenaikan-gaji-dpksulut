@@ -12,7 +12,7 @@ class UserController extends Controller
     
     public function index()
     {
-        $items = User::where('role', '!=', 'Kepala Dinas')->get()->sortDesc();
+        $items = User::whereIn('role', ['Sub Bagian Kepegawaian', 'Dinas Daerah'])->get()->sortDesc();
         return view('pages.pengguna', compact('items'));
     }
 

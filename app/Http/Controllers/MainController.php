@@ -8,6 +8,13 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('pages.beranda');
+        $user = auth()->user();
+        $showAlert = false;
+
+        if ($user->nip === null || $user->telp === null || $user->tgl_lahir === null || $user->jenis_kelamin === null) {
+            $showAlert = true;
+        }
+        
+        return view('pages.beranda', compact('showAlert'));
     }
 }

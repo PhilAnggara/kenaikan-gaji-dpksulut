@@ -39,35 +39,80 @@
       <div class="col-12 col-lg-8">
         <div class="card shadow-sm">
           <div class="card-body">
-            <form action="#" method="get">
+            <form action="{{ route('informasi-pribadi.store') }}" method="POST">
+              @csrf
+
               <div class="form-group">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" value="{{ auth()->user()->name }}">
+                <label for="name" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') ?? auth()->user()->name }}" placeholder="Nama Lengkap" required autocomplete="off">
+                @error('name')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
               </div>
+
+              <div class="form-group">
+                <label for="nip" class="form-label">NIP <span class="text-muted">(Nomor Induk Pegawai)</span></label>
+                <input type="number" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip"
+                  value="{{ old('nip') ?? auth()->user()->nip }}" placeholder="NIP" required autocomplete="off">
+                  @error('nip')
+                    <div class="invalid-feedback">
+                      <i class="bx bx-radio-circle"></i>
+                      {{ $message }}
+                    </div>
+                  @enderror
+              </div>
+
               <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Your Email"
-                  value="{{ auth()->user()->email }}">
+                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+                  value="{{ old('email') ?? auth()->user()->email }}" placeholder="Email" required autocomplete="off">
+                  @error('email')
+                    <div class="invalid-feedback">
+                      <i class="bx bx-radio-circle"></i>
+                      {{ $message }}
+                    </div>
+                  @enderror
               </div>
+
               <div class="form-group">
-                <label for="phone" class="form-label">Nomor Telepon</label>
-                <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone"
-                  value="083xxxxxxxxx">
+                <label for="telp" class="form-label">Nomor Telepon</label>
+                <input type="number" class="form-control @error('telp') is-invalid @enderror" id="telp" name="telp"
+                  value="{{ old('telp') ?? auth()->user()->telp }}" placeholder="Nomor Telepon" required autocomplete="off">
+                  @error('telp')
+                    <div class="invalid-feedback">
+                      <i class="bx bx-radio-circle"></i>
+                      {{ $message }}
+                    </div>
+                  @enderror
               </div>
+              
               <div class="form-group">
-                <label for="birthday" class="form-label">Tanggal Lahir</label>
-                <input type="date" name="birthday" id="birthday" class="form-control" placeholder="Your Birthday">
+                <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+                <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir') ?? auth()->user()->tgl_lahir }}" placeholder="Tanggal Lahir" required autocomplete="off">
+                @error('tgl_lahir')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
               </div>
+
               <div class="form-group">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select name="gender" id="gender" class="form-control">
-                  <option value="male">Laki-laki</option>
-                  <option value="female">Perempuan</option>
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                  <option value="" selected disabled>-- Pilih Jenis Kelamin --</option>
+                  <option {{ (old('jenis_kelamin') == 'Laki-laki' || auth()->user()->jenis_kelamin == 'Laki-laki') ? 'selected' : '' }}>Laki-laki</option>
+                  <option {{ (old('jenis_kelamin') == 'Perempuan' || auth()->user()->jenis_kelamin == 'Perempuan') ? 'selected' : '' }}>Perempuan</option>
                 </select>
               </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+
+              <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
               </div>
+              
             </form>
           </div>
         </div>
