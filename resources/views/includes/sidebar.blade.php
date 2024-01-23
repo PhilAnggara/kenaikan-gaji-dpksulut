@@ -56,8 +56,8 @@
         </li>
 
         @if (auth()->user()->role === 'ASN Pemohon')
-          <li class="sidebar-item  {{ Request::is('kenaikan-gaji') ? 'active' : '' }}">
-            <a href="{{ route('index') }}" class='sidebar-link'>
+          <li class="sidebar-item  {{ Request::is('pendaftaran-kenaikan-gaji') ? 'active' : '' }}">
+            <a href="{{ route('pendaftaran') }}" class='sidebar-link'>
               <i class="fa fa-fw fa-file-invoice"></i>
               <span>Pendaftaran Kenaikan Gaji</span>
             </a>
@@ -65,8 +65,8 @@
         @endif
 
         @if (auth()->user()->role !== 'ASN Pemohon')
-          <li class="sidebar-item  {{ Request::is('kenaikan-gaji') ? 'active' : '' }}">
-            <a href="{{ route('index') }}" class='sidebar-link'>
+          <li class="sidebar-item  {{ Request::is('permohonan-kenaikan-gaji') ? 'active' : '' }}">
+            <a href="{{ route('permohonan-kenaikan-gaji.index') }}" class='sidebar-link'>
               <i class="fa fa-fw fa-memo-pad"></i>
               <span>Permohonan Kenaikan Gaji</span>
             </a>

@@ -32,6 +32,21 @@ function hapusData(id, title, text) {
   })
 }
 
+function setujui(id, title, text) {
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Ya, Setujui!',
+    cancelButtonText: 'Batal'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById(`setujui-${id}`).submit();
+    }
+  })
+}
+
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text);
   Swal.fire({
@@ -43,3 +58,12 @@ function copyToClipboard(text) {
     title: 'Disalin ke clipboard!',
   })
 }
+
+
+// Tooltip
+document.addEventListener('DOMContentLoaded', function () {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+}, false);

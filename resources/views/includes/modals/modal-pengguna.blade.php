@@ -92,6 +92,84 @@
       </div>
       <div class="modal-body">
         
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>Nama</th>
+                <td>{{ $item->name }}</td>
+              </tr>
+              <tr>
+                <th>NIP</th>
+                <td>
+                  @if ($item->nip)
+                    <button class="btn btn-sm icon icon-left btn-outline-secondary rounded-pill" onclick="copyToClipboard('{{ $item->user }}')">
+                      <i class="fal fa-clipboard"></i>
+                      {{ $item->nip }}
+                    </button>
+                  @else
+                    -
+                  @endif
+                </td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>
+                  <i class="fal fa-fw fa-envelope"></i>
+                  {{ $item->email }}
+                </td>
+              </tr>
+              <tr>
+                <th>No Telp</th>
+                <td>
+                  @if ($item->telp)
+                    <i class="fal fa-fw fa-phone"></i>
+                    {{ $item->telp }}
+                  @else
+                    -
+                  @endif
+                </td>
+              </tr>
+              <tr>
+                <th>Tanggal Lahir</th>
+                <td>
+                  @if ($item->tgl_lahir)
+                    <i class="fal fa-fw fa-calendar-day text-danger"></i>
+                    {{ tgl($item->tgl_lahir) }}
+                  @else
+                    -
+                  @endif
+                </td>
+              </tr>
+              <tr>
+                <th>Jenis Kelamin</th>
+                <td>
+                  @if ($item->jenis_kelamin)
+                    <i class="fal fa-fw fa-{{ $item->jenis_kelamin === "Laki-laki" ? "mars text-primary" : "venus text-danger" }}"></i>
+                    {{ $item->jenis_kelamin }}
+                  @else
+                    -
+                  @endif
+                </td>
+              </tr>
+              <tr>
+                <th>Hak Akses</th>
+                <td>
+                  @if ($item->role == 'Kepala Dinas')
+                    <span class="badge bg-light-danger">{{ $item->role }}</span>
+                  @elseif ($item->role == 'Sub Bagian Kepegawaian')
+                    <span class="badge bg-light-primary">{{ $item->role }}</span>
+                  @elseif ($item->role == 'Dinas Daerah')
+                    <span class="badge bg-light-secondary">{{ $item->role }}</span>
+                  @else
+                    <span class="badge bg-light-success">{{ $item->role }}</span>
+                  @endif
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KenaikanGajiController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('informasi-pribadi', PersonalInformationController::class);
     Route::resource('kelola-pengguna', UserController::class)->middleware('checkRole:Kepala Dinas');
     Route::post('change-password', [PersonalInformationController::class, 'changePassword'])->name('change.password');
+    Route::get('pendaftaran-kenaikan-gaji', [MainController::class, 'pendaftaran'])->middleware('checkRole:ASN Pemohon')->name('pendaftaran');
+    Route::post('pendaftaran-kenaikan-gaji', [MainController::class, 'kirimPendaftaran'])->middleware('checkRole:ASN Pemohon')->name('kirim-pendaftaran');
+    Route::resource('permohonan-kenaikan-gaji', KenaikanGajiController::class)->middleware('checkRole:Kepala Dinas,Sub Bagian Kepegawaian,Dinas Daerah');
+    Route::put('buat-permohonan-baru/{id}', [MainController::class, 'permohonanBaru'])->name('permohonan.baru');
 });
 
 Route::get('/dashboard', function () {
